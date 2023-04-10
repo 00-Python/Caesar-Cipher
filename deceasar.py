@@ -1,22 +1,19 @@
-'''this is a code to crack a ceaser cipher'''
+'''this is a code to decipher a ceaser cipher'''
 
 # get the encrypted text
-encrypted_text = "cz sio uly lyuxcha nbcm nbyh sippy mowwymmzoffs xywixyx cn"
+encrypted_text = "cz sio uly lyuxcha nbcm nbyh sio'py mowwymmzoffs xywixyx cn"
 
 # get the index of the word seperators
-space_index = []
-for i in range(len(encrypted_text)):
-    if encrypted_text[i] == " ":
-        space_index.append(i)
+
 
 # alphabet
 alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
 shift = 0
-max_shift = 7
+max_shift = 7 # Enter nuber of shifts to perform
 decrypted_text = []
 
-for i in range(1,max_shift): # loop through all possible shifts
+for i in range(0,max_shift): # loop through all possible shifts
     shift = i # shift the alphabet
     string = ''
     for letter in encrypted_text: # loop through each letter in the encrypted text
@@ -29,4 +26,14 @@ for i in range(1,max_shift): # loop through all possible shifts
             # add the letter to the string
             string += letter
     decrypted_text.append(string)
-print(decrypted_text)
+
+# print the decrypted text
+length = len(decrypted_text)
+majority = length - 1
+
+print('Decryption initialized: ')
+for i in range(majority):
+    print('Shift num ' + str(i+1) + ': ' + decrypted_text[i])
+
+print('\nDecryption complete:           (Last shift is most likely the correct one)')
+print('Shift num ' + str(length) + ': ' + decrypted_text[length - 1])
